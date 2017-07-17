@@ -10,8 +10,9 @@ This is a small AES encryption and decryption library written in C. It is design
 
 Standard usage can be seen in the test.c file. The functions aes_ecb_encrypt() and 	aes_ecb_decrypt() take a pointer to the message to be encrypted/decrypted, the key to be used, and the size of the message. aes_cbc_encrypt() and aes_cbc_decrypt() take the same arguments as well as an Initilization Vector (IV). The data pointed to by the message pointer will then by encrypted or decrypted for the size given.
 
-Note: This library does not error check or pad as there are several different ways that padding could be implemented. The message must be divisible by 16 bytes (128 bits) and both the key and the IV must be exactly 16 bytes. 
+This library does not error check or pad as there are several different ways that padding could be implemented. The message must be divisible by 16 bytes (128 bits) and both the key and the IV must be exactly 16 bytes. 
 
+Note: It is my own personal recommendation that you only ever encrypt things in CBC mode. ECB mode has several issues, most notably the fact that the same piece of 16 byte plain text will always encrypt to the same 16 bytes. For example, if I was encrypting a document that had my name, "Kellen L Cataldo" (16 bytes) appear more than once in the plain text, the exact same sequence of characters will appear multiple times in the encrypted text. This makes it relatively easy to detect if a file has been encrypted using AES ECB mode. 
 
 ### How it works
 
