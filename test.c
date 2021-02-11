@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "aes_lib.h"
+#include "aes_lib/aes_lib.h"
 
 int main() {
 
